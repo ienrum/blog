@@ -1,8 +1,37 @@
+"use client";
+import { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { selectUsers } from "../../redux/slices/usersSlice";
+
+import ProfileEditForm from "../../components/ui/ProfileEditForm";
+
+const userId = 0;
+
 const Profile = (): React.ReactNode => {
+  const users = useSelector(selectUsers);
+  const [user, setUser] = useState(users[userId]);
+  const [isEdit, setIsEdit] = useState(false);
+
+  const editHandler = () => {
+    setIsEdit((prev) => !prev);
+  };
+
   return (
-    <div>
+    <>
       <h1>Profile</h1>
-    </div>
+      {user !== undefined && !isEdit && (
+        <>
+          <p>{user.name}</p>
+          <p>{user.email}</p>
+          <button onClick={editHandler}>Edit Profile</button>
+        </>
+      )}
+      {user !== undefined && isEdit && (
+        <ProfileEditForm user={user} editHandler={editHandler} />
+      )}
+    </>
   );
 };
 
