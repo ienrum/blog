@@ -1,13 +1,12 @@
 import { Provider } from "react-redux";
 import store from "../redux/store";
 
+import "./index.css";
+
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 
 import Providers from "../redux/provider";
 import Layout from "@/components/layouts/Layout";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +20,7 @@ export default function RootLayout({
 }): React.ReactNode {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Providers>
           <Layout>{children}</Layout>
         </Providers>
