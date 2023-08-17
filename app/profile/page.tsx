@@ -11,8 +11,9 @@ const userId = 0;
 
 const Profile = (): React.ReactNode => {
   const users = useSelector(selectUsers);
-  const [user, setUser] = useState(users[userId]);
   const [isEdit, setIsEdit] = useState(false);
+
+  const user = users[userId];
 
   const editHandler = () => {
     setIsEdit((prev) => !prev);

@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "../../redux/slices/usersSlice";
 
 interface Inputs {
+  id: number;
   name: string;
   email: string;
   password: string;
@@ -35,6 +36,8 @@ const ProfileEditForm = ({ user, editHandler }: Props): React.ReactNode => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor="id"></label>
+      <input type="hidden" {...register("id", { value: user.id })} />
       <label htmlFor="name">Name</label>
       <input {...register("name", { value: user.name })} />
       {errors.name !== undefined && <span>This field is required</span>}
