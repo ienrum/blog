@@ -20,12 +20,12 @@ export const usersSlice = createSlice({
     },
     updateUser: (state, action) => {
       const { id, name, email, password } = action.payload;
-      const user = state.users.find((user) => user.id === id);
-      if (user) {
-        user.name = name;
-        user.email = email;
-        user.password = password;
-      }
+      state.users = state.users.map((user) => {
+        if (user.id === id) {
+          return { id, name, email, password };
+        }
+        return user;
+      });
     },
   },
 });
