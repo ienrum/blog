@@ -1,5 +1,7 @@
 "use client";
-import Navigation from "./Navigation";
+// import Navigation from "./Navigation";
+import Header from "./Header";
+import styles from "./Layout.module.css";
 
 interface Props {
   children: React.ReactNode;
@@ -7,9 +9,9 @@ interface Props {
 
 const Layout = ({ children }: Props): React.ReactNode => {
   return (
-    <div className="layout">
-      <Navigation />
-      <div className="main">{children}</div>
+    <div className={styles.container}>
+      <Header />
+      {children}
     </div>
   );
 };
